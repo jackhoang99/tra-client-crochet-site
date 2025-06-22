@@ -14,33 +14,6 @@ const About = () => {
     }
   }
 
-  const skills = [
-    {
-      icon: Heart,
-      title: "Amigurumi Specialist",
-      description: "Creating adorable 3D characters and creatures with intricate details.",
-      color: "bg-pink-100 text-pink-600"
-    },
-    {
-      icon: Palette,
-      title: "Color Enthusiast",
-      description: "Love experimenting with vibrant color combinations and gradients.",
-      color: "bg-purple-100 text-purple-600"
-    },
-    {
-      icon: Award,
-      title: "Pattern Designer",
-      description: "Developing original patterns and sharing techniques with the community.",
-      color: "bg-blue-100 text-blue-600"
-    },
-    {
-      icon: Camera,
-      title: "Process Documenter",
-      description: "Capturing every step of the creative journey through photos and videos.",
-      color: "bg-green-100 text-green-600"
-    }
-  ]
-
   const milestones = [
     {
       year: "2021",
@@ -162,27 +135,6 @@ const About = () => {
               <div className="absolute -top-6 -right-6 bg-yellow-400 text-yellow-900 px-6 py-3 rounded-full font-bold shadow-lg animate-bounce">
                 That's me! 👋
               </div>
-            </div>
-          </div>
-
-          {/* Skills Grid */}
-          <div className="mb-20">
-            <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              What I Love to Create
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {skills.map((skill, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center"
-                >
-                  <div className={`w-16 h-16 ${skill.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                    <skill.icon className="w-8 h-8" />
-                  </div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-3">{skill.title}</h4>
-                  <p className="text-gray-600">{skill.description}</p>
-                </div>
-              ))}
             </div>
           </div>
 

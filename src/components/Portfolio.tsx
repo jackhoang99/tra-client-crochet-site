@@ -4,16 +4,17 @@ import { useProjects } from '../hooks/useProjects'
 
 const Portfolio = () => {
   const { projects, loading, error } = useProjects()
-  const [activeCategory, setActiveCategory] = useState('all')
+  const [activeDifficulty, setActiveDifficulty] = useState('all')
   const [selectedProject, setSelectedProject] = useState<any>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [currentPage, setCurrentPage] = useState(1)
+  const projectsPerPage = 6
 
-  const categories = [
+  const difficulties = [
     { id: 'all', name: 'All Projects', color: 'bg-gray-100 text-gray-700' },
-    { id: 'amigurumi', name: 'Amigurumi', color: 'bg-pink-100 text-pink-700' },
-    { id: 'clothing', name: 'Clothing', color: 'bg-purple-100 text-purple-700' },
-    { id: 'home', name: 'Home Decor', color: 'bg-blue-100 text-blue-700' },
-    { id: 'accessories', name: 'Accessories', color: 'bg-green-100 text-green-700' }
+    { id: 'Beginner', name: 'Beginner', color: 'bg-green-100 text-green-700' },
+    { id: 'Intermediate', name: 'Intermediate', color: 'bg-yellow-100 text-yellow-700' },
+    { id: 'Advanced', name: 'Advanced', color: 'bg-red-100 text-red-700' }
   ]
 
   // Sample projects for demo (will be replaced by Supabase data)
@@ -33,7 +34,8 @@ const Portfolio = () => {
       completed_date: "March 2024",
       description: "A adorable family of penguins made with soft cotton yarn. Each penguin has its own personality with different colored scarves and expressions.",
       techniques: ["Single crochet", "Increasing", "Decreasing", "Color changes"],
-      yarn_details: "Cotton DK weight in black, white, orange, and various colors for accessories"
+      yarn_details: "Cotton DK weight in black, white, orange, and various colors for accessories",
+      created_at: "2024-03-15T10:00:00Z"
     },
     {
       id: '2',
@@ -49,7 +51,8 @@ const Portfolio = () => {
       completed_date: "February 2024",
       description: "A vibrant throw blanket made from 64 granny squares in rainbow colors. Perfect for adding a pop of color to any room.",
       techniques: ["Granny squares", "Joining", "Border work"],
-      yarn_details: "Acrylic worsted weight in 8 rainbow colors"
+      yarn_details: "Acrylic worsted weight in 8 rainbow colors",
+      created_at: "2024-02-20T14:30:00Z"
     },
     {
       id: '3',
@@ -65,16 +68,121 @@ const Portfolio = () => {
       completed_date: "January 2024",
       description: "A functional and adorable tote bag featuring a cat face design. Sturdy enough for everyday use with reinforced handles.",
       techniques: ["Single crochet", "Surface crochet", "Handle construction"],
-      yarn_details: "Cotton blend in cream and brown"
+      yarn_details: "Cotton blend in cream and brown",
+      created_at: "2024-01-10T09:15:00Z"
+    },
+    {
+      id: '4',
+      title: "Cozy Winter Scarf",
+      category: "clothing",
+      images: [
+        "https://images.pexels.com/photos/7188004/pexels-photo-7188004.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
+      thumbnail: "https://images.pexels.com/photos/7188004/pexels-photo-7188004.jpeg?auto=compress&cs=tinysrgb&w=400",
+      difficulty: "Beginner",
+      time_spent: "6 hours",
+      completed_date: "December 2023",
+      description: "A warm and cozy scarf perfect for winter weather. Features a simple but elegant stitch pattern.",
+      techniques: ["Single crochet", "Chain stitch"],
+      yarn_details: "Wool blend in navy blue",
+      created_at: "2023-12-05T16:45:00Z"
+    },
+    {
+      id: '5',
+      title: "Amigurumi Dragon",
+      category: "amigurumi",
+      images: [
+        "https://images.pexels.com/photos/6474557/pexels-photo-6474557.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
+      thumbnail: "https://images.pexels.com/photos/6474557/pexels-photo-6474557.jpeg?auto=compress&cs=tinysrgb&w=400",
+      difficulty: "Advanced",
+      time_spent: "20 hours",
+      completed_date: "November 2023",
+      description: "A detailed dragon with moveable wings and intricate scale texture. One of my most challenging projects!",
+      techniques: ["Single crochet", "Increasing", "Decreasing", "Surface crochet", "Wire armature"],
+      yarn_details: "Cotton DK weight in green, gold, and red",
+      created_at: "2023-11-20T11:30:00Z"
+    },
+    {
+      id: '6',
+      title: "Kitchen Dishcloths Set",
+      category: "home",
+      images: [
+        "https://images.pexels.com/photos/7188067/pexels-photo-7188067.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
+      thumbnail: "https://images.pexels.com/photos/7188067/pexels-photo-7188067.jpeg?auto=compress&cs=tinysrgb&w=400",
+      difficulty: "Beginner",
+      time_spent: "4 hours",
+      completed_date: "October 2023",
+      description: "A set of 6 colorful dishcloths for the kitchen. Practical and pretty!",
+      techniques: ["Single crochet", "Double crochet"],
+      yarn_details: "Cotton yarn in various bright colors",
+      created_at: "2023-10-15T13:20:00Z"
+    },
+    {
+      id: '7',
+      title: "Baby Booties",
+      category: "clothing",
+      images: [
+        "https://images.pexels.com/photos/6474569/pexels-photo-6474569.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
+      thumbnail: "https://images.pexels.com/photos/6474569/pexels-photo-7188004.jpeg?auto=compress&cs=tinysrgb&w=400",
+      difficulty: "Intermediate",
+      time_spent: "3 hours",
+      completed_date: "September 2023",
+      description: "Adorable baby booties with ribbon ties. Made as a gift for a friend's new baby.",
+      techniques: ["Single crochet", "Increasing", "Decreasing"],
+      yarn_details: "Soft baby yarn in pastel pink",
+      created_at: "2023-09-10T08:00:00Z"
+    },
+    {
+      id: '8',
+      title: "Intricate Lace Doily",
+      category: "home",
+      images: [
+        "https://images.pexels.com/photos/7188004/pexels-photo-7188004.jpeg?auto=compress&cs=tinysrgb&w=800"
+      ],
+      thumbnail: "https://images.pexels.com/photos/7188004/pexels-photo-7188004.jpeg?auto=compress&cs=tinysrgb&w=400",
+      difficulty: "Advanced",
+      time_spent: "15 hours",
+      completed_date: "August 2023",
+      description: "A delicate lace doily with complex stitch patterns. Required careful attention to detail and precise tension control.",
+      techniques: ["Chain spaces", "Picots", "Complex stitch combinations"],
+      yarn_details: "Fine cotton thread in white",
+      created_at: "2023-08-25T14:20:00Z"
     }
   ]
 
-  // Use sample data if no Supabase data available
-  const displayProjects = projects.length > 0 ? projects : sampleProjects
+  // Use sample data if no Supabase data available, sort by created_at descending (newest first)
+  const allProjects = projects.length > 0 ? projects : sampleProjects
+  const sortedProjects = [...allProjects].sort((a, b) => 
+    new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+  )
 
-  const filteredProjects = activeCategory === 'all' 
-    ? displayProjects 
-    : displayProjects.filter(project => project.category === activeCategory)
+  const filteredProjects = activeDifficulty === 'all' 
+    ? sortedProjects 
+    : sortedProjects.filter(project => project.difficulty === activeDifficulty)
+
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage)
+  const startIndex = (currentPage - 1) * projectsPerPage
+  const endIndex = startIndex + projectsPerPage
+  const currentProjects = filteredProjects.slice(startIndex, endIndex)
+
+  // Reset to page 1 when difficulty changes
+  const handleDifficultyChange = (difficultyId: string) => {
+    setActiveDifficulty(difficultyId)
+    setCurrentPage(1)
+  }
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+    // Scroll to top of portfolio section
+    const element = document.getElementById('portfolio')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   const openModal = (project: any) => {
     setSelectedProject(project)
@@ -155,26 +263,34 @@ const Portfolio = () => {
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
+        {/* Difficulty Filter */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
+          {difficulties.map((difficulty) => (
             <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
+              key={difficulty.id}
+              onClick={() => handleDifficultyChange(difficulty.id)}
               className={`px-6 py-3 rounded-full font-medium transition-all duration-200 transform hover:scale-105 ${
-                activeCategory === category.id
+                activeDifficulty === difficulty.id
                   ? 'bg-pink-500 text-white shadow-lg'
-                  : category.color + ' hover:shadow-md'
+                  : difficulty.color + ' hover:shadow-md'
               }`}
             >
-              {category.name}
+              {difficulty.name}
             </button>
           ))}
         </div>
 
+        {/* Results Info */}
+        <div className="text-center mb-8">
+          <p className="text-gray-600">
+            Showing {currentProjects.length} of {filteredProjects.length} projects
+            {activeDifficulty !== 'all' && ` at ${activeDifficulty} level`}
+          </p>
+        </div>
+
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {currentProjects.map((project) => (
             <div
               key={project.id}
               className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group cursor-pointer"
@@ -233,10 +349,49 @@ const Portfolio = () => {
           ))}
         </div>
 
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center space-x-2">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="flex items-center px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+            >
+              <ChevronLeft className="w-4 h-4 mr-1" />
+              Previous
+            </button>
+
+            <div className="flex space-x-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => handlePageChange(page)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
+                    currentPage === page
+                      ? 'bg-pink-500 text-white'
+                      : 'text-gray-600 bg-white border border-gray-300 hover:bg-gray-50'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="flex items-center px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+            >
+              Next
+              <ChevronRight className="w-4 h-4 ml-1" />
+            </button>
+          </div>
+        )}
+
         {/* Empty state */}
         {filteredProjects.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-gray-600 text-lg">No projects found in this category.</p>
+            <p className="text-gray-600 text-lg">No projects found at this difficulty level.</p>
           </div>
         )}
 

@@ -18,22 +18,26 @@ const About = () => {
     {
       year: "2021",
       title: "Started My Journey",
-      description: "Picked up my first crochet hook and fell in love with the craft"
+      description: "Picked up my first crochet hook and fell in love with the craft",
+      image: "/yuto-21.png"
     },
     {
       year: "2022",
       title: "First Complex Project",
-      description: "Completed my first amigurumi - a little teddy bear that took 3 attempts!"
+      description: "Completed my first amigurumi - a little teddy bear that took 3 attempts!",
+      image: "/yuto-22.png"
     },
     {
       year: "2023",
       title: "Pattern Designing",
-      description: "Started creating and sharing my own original patterns"
+      description: "Started creating and sharing my own original patterns",
+      image: "/yuto-22.png"
     },
     {
       year: "2024",
       title: "Teaching Others",
-      description: "Began hosting local workshops and online tutorials"
+      description: "Began hosting local workshops and online tutorials",
+      image: "/yuto-21.png"
     }
   ]
 
@@ -48,7 +52,7 @@ const About = () => {
 
   return (
     <>
-      <section id="about" className="py-16 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+      <section id="about" className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 py-20">
         <div className="container mx-auto px-4">
           
           {/* Main About Section */}
@@ -56,26 +60,21 @@ const About = () => {
             
             {/* Content */}
             <div>
-              <div className="inline-flex items-center bg-pink-100 text-pink-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <div className="inline-flex items-center bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
                 <Heart className="w-4 h-4 mr-2" />
                 About Me
               </div>
               
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-amber-900 mb-6">
                 Hi, I'm Yuto!
-                <span className="block text-pink-500">Your Friendly Neighborhood Crocheter</span>
+                <span className="block text-orange-600">Your Friendly Neighborhood Crocheter</span>
               </h2>
               
-              <div className="space-y-4 text-lg text-gray-600 mb-8">
+              <div className="space-y-4 text-lg text-amber-700 mb-8">
                 <p>
                   What started as a way to keep my hands busy during Netflix binges has turned into 
                   a passionate hobby that brings me endless joy. I love the meditative rhythm of 
                   crochet and the magic of watching simple yarn transform into something beautiful.
-                </p>
-                <p>
-                  My specialty is amigurumi - those adorable little crocheted creatures that seem 
-                  to have personalities of their own. But I also enjoy making practical items like 
-                  bags, blankets, and clothing that can be used and loved every day.
                 </p>
                 <p>
                   When I'm not crocheting, you can find me planning my next project, hunting for 
@@ -88,19 +87,19 @@ const About = () => {
                   // Loading skeleton
                   Array.from({ length: 3 }).map((_, index) => (
                     <div key={index} className="text-center animate-pulse">
-                      <div className="h-8 bg-gray-200 rounded mb-2"></div>
-                      <div className="h-4 bg-gray-200 rounded"></div>
+                      <div className="h-8 bg-orange-200 rounded mb-2"></div>
+                      <div className="h-4 bg-orange-200 rounded"></div>
                     </div>
                   ))
                 ) : (
                   displayStats.map((stat, index) => {
-                    const colors = ['text-pink-500', 'text-purple-500', 'text-blue-500']
+                    const colors = ['text-orange-600', 'text-amber-600', 'text-yellow-600']
                     return (
                       <div key={stat.key || index} className="text-center">
                         <div className={`text-3xl font-bold ${colors[index]} mb-2`}>
                           {stat.value}
                         </div>
-                        <div className="text-gray-600">{stat.label}</div>
+                        <div className="text-amber-700">{stat.label}</div>
                       </div>
                     )
                   })
@@ -110,13 +109,13 @@ const About = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button 
                   onClick={() => scrollToSection('portfolio')}
-                  className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 rounded-full font-bold transition-all duration-200 transform hover:scale-105"
+                  className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold transition-all duration-200 transform hover:scale-105"
                 >
                   View My Work
                 </button>
                 <button 
                   onClick={() => setIsContactModalOpen(true)}
-                  className="bg-white text-pink-500 border-2 border-pink-500 hover:bg-pink-50 px-8 py-4 rounded-full font-bold transition-all duration-200"
+                  className="bg-white text-orange-600 border-2 border-orange-500 hover:bg-orange-50 px-8 py-4 rounded-full font-bold transition-all duration-200"
                 >
                   Get In Touch
                 </button>
@@ -127,12 +126,12 @@ const About = () => {
             <div className="relative">
               <div className="bg-white rounded-3xl p-6 shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-300">
                 <img
-                  src="https://images.pexels.com/photos/7188004/pexels-photo-7188004.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="/yuto-about.png"
                   alt="Yuto working on a crochet project"
                   className="w-full h-80 object-cover rounded-2xl"
                 />
               </div>
-              <div className="absolute -top-6 -right-6 bg-yellow-400 text-yellow-900 px-6 py-3 rounded-full font-bold shadow-lg animate-bounce">
+              <div className="absolute -top-6 -right-6 bg-yellow-400 text-amber-900 px-6 py-3 rounded-full font-bold shadow-lg animate-bounce">
                 That's me! 👋
               </div>
             </div>
@@ -140,23 +139,27 @@ const About = () => {
 
           {/* Timeline */}
           <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl">
-            <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            <h3 className="text-3xl font-bold text-center text-amber-900 mb-12">
               My Crochet Journey
             </h3>
             <div className="space-y-8">
               {milestones.map((milestone, index) => (
                 <div key={index} className="flex items-start space-x-6">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
-                      {milestone.year.slice(-2)}
+                    <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center shadow-lg">
+                      <img
+                        src={milestone.image}
+                        alt={`Year ${milestone.year}`}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
                   <div className="flex-grow">
                     <div className="flex items-center space-x-3 mb-2">
-                      <h4 className="text-xl font-bold text-gray-900">{milestone.title}</h4>
-                      <span className="text-sm text-gray-500">{milestone.year}</span>
+                      <h4 className="text-xl font-bold text-amber-900">{milestone.title}</h4>
+                      <span className="text-sm text-amber-600">{milestone.year}</span>
                     </div>
-                    <p className="text-gray-600">{milestone.description}</p>
+                    <p className="text-amber-700">{milestone.description}</p>
                   </div>
                 </div>
               ))}

@@ -17,25 +17,25 @@ const Footer = () => {
   const socialLinks = [
     { 
       icon: Instagram, 
-      color: 'hover:text-pink-400', 
+      color: 'hover:text-orange-700', 
       label: 'Instagram',
       url: 'https://instagram.com/yutos_crochet'
     },
     { 
       icon: Youtube, 
-      color: 'hover:text-red-400', 
+      color: 'hover:text-orange-800', 
       label: 'YouTube',
       url: 'https://youtube.com/@yutoscrochet'
     },
     { 
       icon: Mail, 
-      color: 'hover:text-green-400', 
+      color: 'hover:text-orange-900', 
       label: 'Email',
       action: () => setIsContactModalOpen(true)
     },
     { 
       icon: MessageCircle, 
-      color: 'hover:text-blue-400', 
+      color: 'hover:text-orange-600', 
       label: 'Discord',
       url: 'https://discord.gg/crochet'
     }
@@ -49,24 +49,28 @@ const Footer = () => {
 
   // Default stats if Supabase data isn't available
   const defaultStats = [
-    { value: "150+", label: "Projects Completed", color: "text-pink-400" },
-    { value: "25+", label: "Original Patterns", color: "text-purple-400" },
-    { value: "3", label: "Years of Experience", color: "text-blue-400" },
-    { value: "500+", label: "Hours of Crocheting", color: "text-green-400" }
+    { value: "150+", label: "Projects Completed" },
+    { value: "25+", label: "Original Patterns" },
+    { value: "3", label: "Years of Experience" },
+    { value: "500+", label: "Hours of Crocheting" }
   ]
 
   const displayStats = stats.length > 0 ? stats : defaultStats
-  const colors = ["text-pink-400", "text-purple-400", "text-blue-400", "text-green-400"]
 
   return (
     <>
-      <footer id="contact" className="bg-gray-900 text-white">
+      <footer id="contact" className="min-h-screen flex flex-col justify-center" style={{ 
+        background: 'linear-gradient(135deg, #fef3e2 0%, #fed7aa 20%, #fdba74 40%, #fb923c 60%, #f59542 80%, #ea580c 100%)' 
+      }}>
         <div className="container mx-auto px-4 py-16">
           
-          {/* Connect Section */}
-          <div className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-3xl p-8 md:p-12 mb-16 text-center">
-            <h3 className="text-3xl font-bold mb-4">Let's Connect! 🧶</h3>
-            <p className="text-xl mb-8 opacity-90">
+          {/* Connect Section - Two tones lighter */}
+          <div 
+            className="rounded-3xl p-8 md:p-12 mb-16 text-center shadow-lg" 
+            style={{ backgroundColor: '#fb923c' }}
+          >
+            <h3 className="text-3xl font-bold mb-4 text-white">Let's Connect! 🧶</h3>
+            <p className="text-xl mb-8 text-orange-100">
               Follow my crochet journey and get inspired for your next project
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -74,7 +78,7 @@ const Footer = () => {
                 href="https://instagram.com/yutos_crochet"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-pink-500 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center space-x-2"
+                className="bg-white text-orange-600 px-6 py-3 rounded-full font-bold hover:bg-orange-50 transition-all duration-200 flex items-center justify-center space-x-2 transform hover:scale-105 shadow-lg"
               >
                 <Instagram className="w-5 h-5" />
                 <span>Follow on Instagram</span>
@@ -84,7 +88,7 @@ const Footer = () => {
                 href="https://youtube.com/@yutoscrochet"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-purple-500 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center space-x-2"
+                className="bg-white text-orange-600 px-6 py-3 rounded-full font-bold hover:bg-orange-50 transition-all duration-200 flex items-center justify-center space-x-2 transform hover:scale-105 shadow-lg"
               >
                 <Youtube className="w-5 h-5" />
                 <span>Watch Tutorials</span>
@@ -99,12 +103,16 @@ const Footer = () => {
             {/* Brand */}
             <div>
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
-                  <span className="text-white text-lg font-bold">🧶</span>
+                <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center bg-white shadow-lg">
+                  <img 
+                    src="/yuto-logo.png" 
+                    alt="Yuto's Crochet Corner Logo" 
+                    className="w-10 h-10 object-contain"
+                  />
                 </div>
-                <h3 className="text-2xl font-bold">Yuto's Crochet Corner</h3>
+                <h3 className="text-2xl font-bold text-orange-900">Yuto's Crochet Corner</h3>
               </div>
-              <p className="text-gray-300 mb-6 leading-relaxed">
+              <p className="mb-6 leading-relaxed text-orange-800">
                 Sharing the joy of crochet through colorful creations and helpful tutorials. 
                 Every stitch tells a story!
               </p>
@@ -116,7 +124,7 @@ const Footer = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`text-gray-400 ${social.color} transition-colors duration-200 p-2 hover:bg-gray-800 rounded-full`}
+                      className={`text-orange-700 transition-all duration-200 p-2 rounded-full hover:bg-orange-200 ${social.color}`}
                       title={social.label}
                     >
                       <social.icon className="w-5 h-5" />
@@ -125,7 +133,7 @@ const Footer = () => {
                     <button
                       key={index}
                       onClick={social.action}
-                      className={`text-gray-400 ${social.color} transition-colors duration-200 p-2 hover:bg-gray-800 rounded-full`}
+                      className={`text-orange-700 transition-all duration-200 p-2 rounded-full hover:bg-orange-200 ${social.color}`}
                       title={social.label}
                     >
                       <social.icon className="w-5 h-5" />
@@ -137,13 +145,13 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-lg font-bold mb-6">Explore</h4>
+              <h4 className="text-lg font-bold mb-6 text-orange-900">Explore</h4>
               <div className="space-y-3">
                 {quickLinks.map((item, index) => (
                   <div key={index}>
                     <button 
                       onClick={item.action}
-                      className="text-gray-300 hover:text-white transition-colors duration-200 text-left"
+                      className="text-orange-800 hover:text-orange-900 transition-all duration-200 text-left hover:translate-x-1 transform"
                     >
                       {item.name}
                     </button>
@@ -154,23 +162,23 @@ const Footer = () => {
 
             {/* Contact & Info */}
             <div>
-              <h4 className="text-lg font-bold mb-6">Get in Touch</h4>
+              <h4 className="text-lg font-bold mb-6 text-orange-900">Get in Touch</h4>
               <div className="space-y-4">
                 <div>
-                  <h5 className="font-medium text-white mb-1">Collaborations</h5>
-                  <p className="text-gray-300 text-sm">Open to pattern testing and yarn reviews</p>
+                  <h5 className="font-medium mb-1 text-orange-900">Collaborations</h5>
+                  <p className="text-sm text-orange-800">Open to pattern testing and yarn reviews</p>
                 </div>
                 <div>
-                  <h5 className="font-medium text-white mb-1">Workshops</h5>
-                  <p className="text-gray-300 text-sm">Available for local and virtual classes</p>
+                  <h5 className="font-medium mb-1 text-orange-900">Workshops</h5>
+                  <p className="text-sm text-orange-800">Available for local and virtual classes</p>
                 </div>
                 <div>
-                  <h5 className="font-medium text-white mb-1">Custom Orders</h5>
-                  <p className="text-gray-300 text-sm">Currently taking commissions</p>
+                  <h5 className="font-medium mb-1 text-orange-900">Custom Orders</h5>
+                  <p className="text-sm text-orange-800">Currently taking commissions</p>
                 </div>
                 <button 
                   onClick={() => setIsContactModalOpen(true)}
-                  className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full font-medium transition-colors duration-200 mt-4"
+                  className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 mt-4 transform hover:scale-105 shadow-lg"
                 >
                   Send Message
                 </button>
@@ -179,23 +187,23 @@ const Footer = () => {
           </div>
 
           {/* Stats */}
-          <div className="border-t border-gray-800 pt-8 mb-8">
+          <div className="border-t border-orange-300 pt-8 mb-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
               {statsLoading ? (
                 // Loading skeleton
                 Array.from({ length: 4 }).map((_, index) => (
                   <div key={index} className="animate-pulse">
-                    <div className="h-8 bg-gray-700 rounded mb-2"></div>
-                    <div className="h-4 bg-gray-700 rounded"></div>
+                    <div className="h-8 bg-orange-200 rounded mb-2"></div>
+                    <div className="h-4 bg-orange-200 rounded"></div>
                   </div>
                 ))
               ) : (
                 displayStats.map((stat, index) => (
                   <div key={stat.key || index}>
-                    <div className={`text-2xl font-bold ${colors[index]} mb-1`}>
+                    <div className="text-2xl font-bold mb-1 text-orange-700">
                       {stat.value}
                     </div>
-                    <div className="text-gray-400 text-sm">{stat.label}</div>
+                    <div className="text-sm text-orange-800">{stat.label}</div>
                   </div>
                 ))
               )}
@@ -203,9 +211,9 @@ const Footer = () => {
           </div>
 
           {/* Bottom */}
-          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm mb-4 md:mb-0 flex items-center">
-              <Heart className="w-4 h-4 mr-1 text-pink-400" />
+          <div className="border-t border-orange-300 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <div className="text-sm mb-4 md:mb-0 flex items-center text-orange-800">
+              <Heart className="w-4 h-4 mr-1 text-orange-600" />
               © 2024 Yuto's Crochet Corner. Made with love and lots of yarn.
             </div>
             <div className="flex space-x-6">
@@ -213,7 +221,7 @@ const Footer = () => {
                 <button 
                   key={link} 
                   onClick={() => link === 'Contact' ? setIsContactModalOpen(true) : null}
-                  className="text-gray-400 hover:text-gray-300 text-sm transition-colors duration-200"
+                  className="text-sm text-orange-800 hover:text-orange-900 transition-colors duration-200"
                 >
                   {link}
                 </button>

@@ -26,7 +26,7 @@ const Footer = () => {
       icon: Instagram,
       color: "hover:text-orange-700",
       label: "Instagram",
-      url: "https://instagram.com/yutos_crochet",
+      url: "https://www.instagram.com/yuto.of.manhattan/",
     },
     {
       icon: Youtube,
@@ -39,12 +39,6 @@ const Footer = () => {
       color: "hover:text-orange-900",
       label: "Email",
       action: () => setIsContactModalOpen(true),
-    },
-    {
-      icon: MessageCircle,
-      color: "hover:text-orange-600",
-      label: "Discord",
-      url: "https://discord.gg/crochet",
     },
   ];
 
@@ -88,7 +82,7 @@ const Footer = () => {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a
-                href="https://instagram.com/yutos_crochet"
+                href="https://www.instagram.com/yuto.of.manhattan/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white text-orange-600 px-6 py-3 rounded-full font-bold hover:bg-orange-50 transition-all duration-200 flex items-center justify-center space-x-2 transform hover:scale-105 shadow-lg"

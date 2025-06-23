@@ -184,26 +184,28 @@ const Footer = () => {
               <div className="space-y-4">
                 <div>
                   <h5 className="font-medium mb-1 text-orange-900">
-                    Collaborations
+                    Let’s Connect
                   </h5>
                   <p className="text-sm text-orange-800">
-                    Open to pattern testing and yarn reviews
+                    Feel free to say hi or share what you’re working on!
                   </p>
                 </div>
                 <div>
                   <h5 className="font-medium mb-1 text-orange-900">
-                    Workshops
+                    Behind the Scenes
                   </h5>
                   <p className="text-sm text-orange-800">
-                    Available for local and virtual classes
+                    Follow along as I experiment with new stitches, patterns,
+                    and cozy creations.
                   </p>
                 </div>
                 <div>
                   <h5 className="font-medium mb-1 text-orange-900">
-                    Custom Orders
+                    For the Love of Crochet
                   </h5>
                   <p className="text-sm text-orange-800">
-                    Currently taking commissions
+                    This space is all about creativity, calm, and the joy of
+                    making something with your hands.
                   </p>
                 </div>
                 <button

@@ -117,30 +117,26 @@ const About = () => {
                     })}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex justify-center lg:justify-start">
                 <button
                   onClick={() => scrollToSection("portfolio")}
                   className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold transition-all duration-200 transform hover:scale-105"
                 >
                   View My Work
                 </button>
-                <button
-                  onClick={() => setIsContactModalOpen(true)}
-                  className="bg-white text-orange-600 border-2 border-orange-500 hover:bg-orange-50 px-8 py-4 rounded-full font-bold transition-all duration-200"
-                >
-                  Get In Touch
-                </button>
               </div>
             </div>
 
-            {/* Image */}
+            {/* Image - Updated to show full image */}
             <div className="relative">
               <div className="bg-white rounded-3xl p-6 shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-300">
-                <img
-                  src="/yuto-about.png"
-                  alt="Yuto working on a crochet project"
-                  className="w-full h-80 object-cover rounded-2xl"
-                />
+                <div className="w-full bg-gray-50 rounded-2xl overflow-hidden" style={{ paddingBottom: '75%' }}>
+                  <img
+                    src="/yuto-about.png"
+                    alt="Yuto working on a crochet project"
+                    className="absolute inset-0 w-full h-full object-contain"
+                  />
+                </div>
               </div>
               <div className="absolute -top-6 -right-6 bg-yellow-400 text-amber-900 px-6 py-3 rounded-full font-bold shadow-lg animate-bounce">
                 That's me! 👋
@@ -157,11 +153,11 @@ const About = () => {
               {milestones.map((milestone, index) => (
                 <div key={index} className="flex items-start space-x-6">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center shadow-lg">
+                    <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center shadow-lg bg-gray-50">
                       <img
                         src={milestone.image}
                         alt={`Year ${milestone.year}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </div>
                   </div>

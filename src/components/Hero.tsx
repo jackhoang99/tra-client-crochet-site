@@ -21,7 +21,7 @@ const Hero = () => {
   const displayStats = stats.length > 0 ? stats.slice(0, 2) : defaultStats
 
   return (
-    <section id="hero" className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 flex items-center justify-center overflow-hidden relative">
+    <section id="hero" className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 flex items-center justify-center overflow-hidden relative py-20">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-20 h-20 bg-orange-200 rounded-full opacity-60 animate-pulse"></div>
